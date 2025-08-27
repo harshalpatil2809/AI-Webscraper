@@ -7,7 +7,7 @@ import io
 
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
-api_key = "P29W8J4bK20sBAAh7OtHxazwLg5l2vQ7EoVL6A26"
+api_key = "YOUR_COHERE_API"
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
