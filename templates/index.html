@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Product Info Extractor</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Extractor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='web-scraper.png') }}" type="image/x-icon">
 </head>
 <body>
     <h1>🛍️ E-commerce Product Info Extractor</h1>
+
     <form method="POST" action="/input">
         <input type="text" name="url" placeholder="Enter product page URL" required>
         <button type="submit">Extract Info</button>
@@ -14,6 +18,14 @@
     {% if error %}
         <p style="color:red;">{{ error }}</p>
     {% endif %}
-        <a href="{{ download_link }}"><button>📥 Download CSV</button></a>
+
+    {% if data %}
+        <h2>✅ Products Extracted</h2>
+
+        <form method="POST" action="{{ url_for('download') }}">
+            <input type="hidden" name="csv_data" value="{{ csv_data }}">
+            <button type="submit">📥 Download CSV</button>
+        </form>
+    {% endif %}
 </body>
 </html>
